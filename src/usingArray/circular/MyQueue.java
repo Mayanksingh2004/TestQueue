@@ -24,7 +24,7 @@ public class MyQueue {
     public boolean enqueue(int element) {
         boolean response = false;
         if (size != queue.length) {
-            rear = Math.abs((++rear) % queue.length);
+            rear = (++rear) % queue.length;
             response = true;
             queue[rear] = element;
             size++;
