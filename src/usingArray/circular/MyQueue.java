@@ -8,7 +8,7 @@ public class MyQueue {
 
     public MyQueue(int sizeOfArray) {
         queue = new int[sizeOfArray];
-        front = 0;
+        front = -1;
         rear = -1;
         size = 0;
     }
@@ -35,8 +35,8 @@ public class MyQueue {
     public int dequeue() {
         int response = 0;
         if (!isEmpty()) {
-            response = queue[front];
-            front = Math.abs(++front % queue.length);
+            response = queue[front + 1];
+            front = ++front % queue.length;
             size--;
         }
         return response;
