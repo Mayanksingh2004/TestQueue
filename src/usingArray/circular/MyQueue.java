@@ -8,7 +8,7 @@ public class MyQueue {
 
     public MyQueue(int sizeOfArray) {
         queue = new int[sizeOfArray];
-        front = -1;
+        front = 0;
         rear = -1;
         size = 0;
     }
@@ -24,7 +24,7 @@ public class MyQueue {
     public boolean enqueue(int element) {
         boolean response = false;
         if (size != queue.length) {
-            rear = (++rear) % queue.length;
+            rear = Math.abs((++rear) % queue.length);
             response = true;
             queue[rear] = element;
             size++;
@@ -35,8 +35,8 @@ public class MyQueue {
     public int dequeue() {
         int response = 0;
         if (!isEmpty()) {
-            response = queue[front + 1];
-            front = --front % queue.length;
+            response = queue[front];
+            front = Math.abs(++front % queue.length);
             size--;
         }
         return response;
